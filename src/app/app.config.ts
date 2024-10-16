@@ -3,7 +3,7 @@ import { provideRouter, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { skip } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,8 +17,9 @@ export const appConfig: ApplicationConfig = {
         }
       })
     ),
-    importProvidersFrom(
+/*     importProvidersFrom(
       HttpClientModule,
-    )
+    ) */
+    provideHttpClient(withInterceptorsFromDi())
   ]
 };
