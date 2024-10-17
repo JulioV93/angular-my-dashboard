@@ -51,6 +51,11 @@ export const routes: Routes = [
         loadComponent: () => import('./dashboard/pages/input-output/input-output.component'),
       },
       {
+        path: 'material',
+        title: 'Angular Materials',
+        loadComponent: () => import('./dashboard/pages/material/material.component'),
+      },
+      {
         path: '',
         redirectTo: 'control-flow',
         pathMatch: 'full',
@@ -59,7 +64,12 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/dashboard',
+    //redirectTo: '/dashboard',
+    //Nueva manera de redireccionar a una ruta por defecto en Angular 18
+    redirectTo: (route) => {
+      console.log(route);
+      return '/dashboard';
+    },
     pathMatch: 'full'
   }
 ];
